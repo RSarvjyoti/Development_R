@@ -1,0 +1,18 @@
+nav {
+  width: 100%;
+  background-color: black;
+  height: 20%;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  color: #ff9933;
+  display: block;
+  text-decoration: none;
+}/*# sourceMappingURL=style.css.map */

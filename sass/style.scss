@@ -1,0 +1,20 @@
+$textColor : #ff9933;
+
+nav{
+    width: 100%;
+    background-color: black;
+    height: 20%;
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li{
+            display: inline-block;
+            a{
+                color: $textColor;
+                display: block;
+                text-decoration: none;
+            }
+        }
+    }
+}
