@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        #container1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap : 10px;
+        }
+        .card{
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .btn {
+            padding: 5px 20px;
+            border: none;
+            background-color: aqua;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">item-11</div>
+        <div class="item">item-21</div>
+        <div class="item">item-31</div>
+        <div class="item">item-41</div>
+        <div class="item">item-51</div>
+        <div class="item">item-61</div>
+        <div class="item">item-71</div>
+        <div class="item">item-81</div>
+        <div class="item">item-91</div>
+        <div class="item">item-101</div>
+    </div>
+
+
+
+    <button id = "lowToHigh">Sort low to high</button>
+    <button id = "highTLow">Sort high to low</button>
+
+    <div id="container1">
+
+    </div>
+
+    <script src="index.js"></script>
+
+
+</body>
+</html>
