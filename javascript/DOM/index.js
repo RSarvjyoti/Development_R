@@ -110,3 +110,32 @@ highToLow.addEventListener("click", () => {
     appendCard(cartData);
     console.log(cartData);
 })
+
+
+// 
+
+let toggle = document.getElementById("toggle");
+
+toggle.addEventListener("click", () => {
+  let body = document.getElementsByTagName("body")[0];
+  
+  // if (body.style.background === "black") {
+  //   body.style.background = "white";
+  //   body.style.color = "black";
+  // } else {
+  //   body.style.background = "black";
+  //   body.style.color = "white";
+  // }
+
+  let currentBackground = window.getComputedStyle(body).backgroundColor;
+
+  // Use RGB value for reliable comparison
+  if (currentBackground === "rgb(0, 153, 153)") {  
+    body.style.background = "#ffffff"; 
+    body.style.color = "black";         
+  } else {
+    body.style.background = "#009999";  
+    body.style.color = "white";         
+  }
+
+})
