@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM</title>
     <style>
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
         #container1 {
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            gap : 10px;
+            gap: 10px;
         }
-        .card{
+
+        .card {
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
             width: 300px;
             height: 300px;
@@ -21,6 +29,7 @@
             justify-content: center;
             flex-direction: column;
         }
+
         .btn {
             padding: 5px 20px;
             border: none;
@@ -28,36 +37,131 @@
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .addProduct {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .addProduct>div {
+            width: 50%;
+            border: 1px solid;
+        }
+
+        .addProduct>div:nth-child(1) {
+            height: 50vh;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form>input {
+            width: 400px;
+            padding: 5px 20px;
+            font-size: 18px;
+        }
+
+        tbody, thead {
+            width: 100%;
+        }
+
+        th>td, tr>td {
+            width: 160px;
+            border-bottom: 1px solid black;
+        }
+        img {
+            width: 160px;
+            height: 100px;
         }
     </style>
 </head>
+
 <body>
 
-    <button id="toggle">Toggle</button>
     <div class="container">
-        <div class="item">item-11</div>
-        <div class="item">item-21</div>
-        <div class="item">item-31</div>
-        <div class="item">item-41</div>
-        <div class="item">item-51</div>
-        <div class="item">item-61</div>
-        <div class="item">item-71</div>
-        <div class="item">item-81</div>
-        <div class="item">item-91</div>
-        <div class="item">item-101</div>
+        <button id="toggle" class="btn">Toggle</button>
+        <div class="container">
+            <div class="item">item-11</div>
+            <div class="item">item-21</div>
+            <div class="item">item-31</div>
+            <div class="item">item-41</div>
+            <div class="item">item-51</div>
+            <div class="item">item-61</div>
+            <div class="item">item-71</div>
+            <div class="item">item-81</div>
+            <div class="item">item-91</div>
+            <div class="item">item-101</div>
+        </div>
+
+        <button id="lowToHigh" class="btn">Sort low to high</button>
+        <button id="highTLow" class="btn">Sort high to low</button>
+
+        <div id="container1" class="container">
+
+        </div>
     </div>
 
 
+    <div class="container">
 
-    <button id = "lowToHigh">Sort low to high</button>
-    <button id = "highTLow">Sort high to low</button>
+        <div class="addProduct">
 
-    <div id="container1">
+            <div class="form">
+                <form>
+                    <input type="text" placeholder="product name" id="productName" name="productName" required>
+                    <input type="text" placeholder="image url" id="image" name="image" required>
+
+                    <input type="text" list="category" id="category" placeholder="Category" name="category" required >
+                    <datalist id="Item">
+                        <option value="Books">
+                        <option value="Clothing">
+                        <option value="Toys">
+                        <option value="Beauty Products">
+                        <option value="Home Appliances">
+                        <option value="Sports Equipment">
+                        <option value="Automotive">
+                        <option value="Pet Supplies">
+                        <option value="Groceries">
+                        <option value="Music Instruments">
+                    </datalist>
+
+                    <input type="text" placeholder="Quntity" id="quntity" name="quntity" required>
+                    <input type="text" placeholder="price" id="price" name="price" required>
+                    <button type="submit" class="btn" id="submitbtn">Add product</button>
+                </form>
+            </div>
+
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>
+                        <td>product name</td>
+                        <td>image url</td>
+                        <td>Category</td>
+                        <td>Quntity</td>
+                        <td>price</td>
+                        </th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+
+        </div>
 
     </div>
-
-    <script src="index.js"></script>
-
 
 </body>
+
 </html>
+<script src="index.js"></script>
+<script src="addData.js"></script>

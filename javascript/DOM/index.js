@@ -10,6 +10,7 @@ items.forEach((elm, index) => {
 
 const cartData = [
   { title: "iPhone", price: 50000, quantity: 1, category: "Electronics" },
+
   {
     title: "Samsung Galaxy",
     price: 45000,
@@ -70,26 +71,26 @@ let createCard = (data) => {
   p1.innerText = data.category;
   p2.innerText = data.quantity;
   p3.innerText = data.price;
-  btn.innerText = "Click ME"
+  btn.innerText = "Click ME";
 
-  btn.addEventListener("click", () => {alert("Button clicked")});
+  btn.addEventListener("click", () => {
+    alert("Button clicked");
+  });
 
-  div.append(h2,p1,p2,p3, btn);
+  div.append(h2, p1, p2, p3, btn);
   return div;
 };
 
-
 function appendCard(data) {
-    let container1 = document.getElementById("container1");
-    container1.innerHTML = "";
-    data.forEach((elm) => {
-        let cart = createCard(elm);
-        container1.append(cart);
-    })
+  let container1 = document.getElementById("container1");
+  container1.innerHTML = "";
+  data.forEach((elm) => {
+    let cart = createCard(elm);
+    container1.append(cart);
+  });
 }
 
-
-appendCard(cartData)
+appendCard(cartData);
 
 // low to high
 
@@ -97,28 +98,30 @@ let lowTohigh = document.getElementById("lowToHigh");
 let highToLow = document.getElementById("highTLow");
 
 lowTohigh.addEventListener("click", () => {
-    cartData.sort((a,b) => {return a.price - b.price});
-    appendCard(cartData);
-    console.log(cartData);
-})
-
+  cartData.sort((a, b) => {
+    return a.price - b.price;
+  });
+  appendCard(cartData);
+  console.log(cartData);
+});
 
 // high to low
 
 highToLow.addEventListener("click", () => {
-    cartData.sort((a,b) => {return b.price - a.price});
-    appendCard(cartData);
-    console.log(cartData);
-})
+  cartData.sort((a, b) => {
+    return b.price - a.price;
+  });
+  appendCard(cartData);
+  console.log(cartData);
+});
 
-
-// 
+// Toogle logic
 
 let toggle = document.getElementById("toggle");
 
 toggle.addEventListener("click", () => {
   let body = document.getElementsByTagName("body")[0];
-  
+
   // if (body.style.background === "black") {
   //   body.style.background = "white";
   //   body.style.color = "black";
@@ -130,12 +133,14 @@ toggle.addEventListener("click", () => {
   let currentBackground = window.getComputedStyle(body).backgroundColor;
 
   // Use RGB value for reliable comparison
-  if (currentBackground === "rgb(0, 153, 153)") {  
-    body.style.background = "#ffffff"; 
-    body.style.color = "black";         
+  if (currentBackground === "rgb(0, 153, 153)") {
+    body.style.background = "#ffffff";
+    body.style.color = "black";
   } else {
-    body.style.background = "#009999";  
-    body.style.color = "white";         
+    body.style.background = "#009999";
+    body.style.color = "white";
   }
+});
 
-})
+//  add product
+
