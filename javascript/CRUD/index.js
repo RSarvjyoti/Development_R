@@ -7,6 +7,11 @@ let updatePatch = document.getElementById("updatePatch");
 let updatePut = document.getElementById("updatePut");
 let deletebtn = document.getElementById("delete");
 
+let userInput = document.getElementById("input");
+let filterbtn = document.getElementById("filter");
+let searchUser = document.getElementById("searchUser");
+let searchBtn = document.getElementById("searchData");
+
 fetchData.addEventListener("click", ()=> {
     fetchDataFromApi("https://jsonplaceholder.typicode.com/posts");
 });
@@ -22,7 +27,17 @@ dissending.addEventListener("click", ()=> {
     fetchDataFromApi("https://jsonplaceholder.typicode.com/posts?_sort=title&_order=desc")
 });
 
-const url = "https://jsonplaceholder.typicode.com/posts";
+// filter
+filterbtn.addEventListener("click", ()=> {
+    fetchDataFromApi(`https://jsonplaceholder.typicode.com/posts?userId=${userInput.value}`);
+})
+
+//  Search
+
+searchBtn.addEventListener("click", () => {
+    let query = searchUser.value;
+    console.log(fetchDataFromApi(`https://jsonplaceholder.typicode.com/posts?q=${query}`));
+})
 
 // fetch data to api
 
@@ -40,14 +55,16 @@ async function fetchDataFromApi(url) {
 // create card
 function createCart(data) {
   let div = document.createElement("div");
+  let h2 = document.createElement("h2");
   let h3 = document.createElement("h3");
   let p = document.createElement("p");
 
+  h2.innerText = `UserId : ${data.userId}`;
   h3.innerText = data.title;
   p.innerText = data.body;
 
   div.className = "card";
-  div.append(h3, p);
+  div.append(h2,h3, p);
   return div;
 }
 
@@ -142,3 +159,7 @@ async function deleteData() {
       console.log(err);
     }
   }
+
+
+//   filter data by user id
+
