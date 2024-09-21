@@ -7,21 +7,28 @@ let updatePatch = document.getElementById("updatePatch");
 let updatePut = document.getElementById("updatePut");
 let deletebtn = document.getElementById("delete");
 
-fetchData.addEventListener("click", fetchDataFromApi);
+fetchData.addEventListener("click", ()=> {
+    fetchDataFromApi("https://jsonplaceholder.typicode.com/posts");
+});
 postData.addEventListener("click", addData);
 updatePatch.addEventListener("click", updateDataUsingPatch);
 updatePut.addEventListener("click", updateDataUsingPut);
 deletebtn.addEventListener("click", deleteData);
-assending.addEventListener("click", fetchDataAscendingOrder);
-dissending.addEventListener("click", fetchDataDescendingOrder);
+
+assending.addEventListener("click", ()=> {
+    fetchDataFromApi('https://jsonplaceholder.typicode.com/posts?_sort=title&_order=asc');
+});
+dissending.addEventListener("click", ()=> {
+    fetchDataFromApi("https://jsonplaceholder.typicode.com/posts?_sort=title&_order=desc")
+});
 
 const url = "https://jsonplaceholder.typicode.com/posts";
 
 // fetch data to api
 
-async function fetchDataFromApi() {
+async function fetchDataFromApi(url) {
   try {
-    let res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    let res = await fetch(url);
     let val = await res.json();
     console.log(val);
     appendData(val);
@@ -29,30 +36,6 @@ async function fetchDataFromApi() {
     console.log(err);
   }
 }
-
-// fetch data in ascending order
-async function fetchDataAscendingOrder() {
-    try {
-      let res = await fetch("https://jsonplaceholder.typicode.com/posts?_sort=title&_order=asc");
-      let val = await res.json();
-      console.log(val);
-      appendData(val);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-// fetch data in descending order
-  async function fetchDataDescendingOrder() {
-    try {
-      let res = await fetch("https://jsonplaceholder.typicode.com/posts?_sort=title&_order=desc");
-      let val = await res.json();
-      console.log(val);
-      appendData(val);
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
 // create card
 function createCart(data) {
