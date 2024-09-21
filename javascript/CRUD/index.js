@@ -12,8 +12,12 @@ let filterbtn = document.getElementById("filter");
 let searchUser = document.getElementById("searchUser");
 let searchBtn = document.getElementById("searchData");
 
+
+// pagination buttons
+let bottonContainer = document.getElementById("bottonContainer");
+
 fetchData.addEventListener("click", ()=> {
-    fetchDataFromApi("https://jsonplaceholder.typicode.com/posts");
+    fetchDataFromApi(`https://jsonplaceholder.typicode.com/posts?_page=1&_limit=20`);
 });
 postData.addEventListener("click", addData);
 updatePatch.addEventListener("click", updateDataUsingPatch);
@@ -21,10 +25,10 @@ updatePut.addEventListener("click", updateDataUsingPut);
 deletebtn.addEventListener("click", deleteData);
 
 assending.addEventListener("click", ()=> {
-    fetchDataFromApi('https://jsonplaceholder.typicode.com/posts?_sort=title&_order=asc');
+    fetchDataFromApi('https://jsonplaceholder.typicode.com/posts?_page=1&_limit=20','_sort=title&_order=asc');
 });
 dissending.addEventListener("click", ()=> {
-    fetchDataFromApi("https://jsonplaceholder.typicode.com/posts?_sort=title&_order=desc")
+    fetchDataFromApi("https://jsonplaceholder.typicode.com/posts?_page=1&_limit=20","_sort=title&_order=desc")
 });
 
 // filter
@@ -41,9 +45,30 @@ searchBtn.addEventListener("click", () => {
 
 // fetch data to api
 
-async function fetchDataFromApi(url) {
+async function fetchDataFromApi(url, queryParams = "") {
   try {
-    let res = await fetch(url);
+    let res = await fetch(`${url}&${queryParams}`);
+
+    // paginaton logic
+
+    let totalData = res.headers.get("X-Total-Count");
+    let limit = 20;
+    let pages = Math.ceil(totalData/limit);
+    console.log(pages);
+
+    bottonContainer.innerHTML = "";
+    for(let i=1;i<=pages; i++) {
+      let btns = document.createElement("button");
+      btns.innerText = i;
+      btns.className = "pageBtn";
+      
+      btns.addEventListener("click", ()=> {
+        fetchDataFromApi(`https://jsonplaceholder.typicode.com/posts?_page=${i}&_limit=${limit}`);
+      })
+
+      bottonContainer.append(btns);
+    }
+
     let val = await res.json();
     console.log(val);
     appendData(val);
@@ -159,7 +184,3 @@ async function deleteData() {
       console.log(err);
     }
   }
-
-
-//   filter data by user id
-
