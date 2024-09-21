@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 100vw;
+            display: flex;
+        }
+
+        .buttons {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buttons>div {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            width: 180px;
+            height: 30px;
+            background: aqua;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .container {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        form>input {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="buttons">
+            <div>
+                <button id="fetchData">Fetch data</button>
+                <button id="addData">Post new data</button>
+                <button id="updatePatch">Update using Patch</button>
+                <button id="updatePut">Upadete using Put</button>
+                <button id="delete">Delete</button>
+                <button id="assending">Assending By Title</button>
+                <button id="dissending">Dissending By Title</button>
+            </div>
+        </div>
+
+        <div class="container">
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="index.js"></script>

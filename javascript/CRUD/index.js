@@ -1,0 +1,161 @@
+let container = document.querySelector(".container");
+let fetchData = document.getElementById("fetchData");
+let assending = document.getElementById("assending");
+let dissending = document.getElementById("dissending");
+let postData = document.getElementById("addData");
+let updatePatch = document.getElementById("updatePatch");
+let updatePut = document.getElementById("updatePut");
+let deletebtn = document.getElementById("delete");
+
+fetchData.addEventListener("click", fetchDataFromApi);
+postData.addEventListener("click", addData);
+updatePatch.addEventListener("click", updateDataUsingPatch);
+updatePut.addEventListener("click", updateDataUsingPut);
+deletebtn.addEventListener("click", deleteData);
+assending.addEventListener("click", fetchDataAscendingOrder);
+dissending.addEventListener("click", fetchDataDescendingOrder);
+
+const url = "https://jsonplaceholder.typicode.com/posts";
+
+// fetch data to api
+
+async function fetchDataFromApi() {
+  try {
+    let res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    let val = await res.json();
+    console.log(val);
+    appendData(val);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// fetch data in ascending order
+async function fetchDataAscendingOrder() {
+    try {
+      let res = await fetch("https://jsonplaceholder.typicode.com/posts?_sort=title&_order=asc");
+      let val = await res.json();
+      console.log(val);
+      appendData(val);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+// fetch data in descending order
+  async function fetchDataDescendingOrder() {
+    try {
+      let res = await fetch("https://jsonplaceholder.typicode.com/posts?_sort=title&_order=desc");
+      let val = await res.json();
+      console.log(val);
+      appendData(val);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+// create card
+function createCart(data) {
+  let div = document.createElement("div");
+  let h3 = document.createElement("h3");
+  let p = document.createElement("p");
+
+  h3.innerText = data.title;
+  p.innerText = data.body;
+
+  div.className = "card";
+  div.append(h3, p);
+  return div;
+}
+
+//  append the cart
+function appendData(data) {
+  container.innerHTML = "";
+
+  data.forEach((item) => {
+    let cart = createCart(item);
+    container.append(cart);
+  });
+}
+
+// post data
+async function addData() {
+  let post = {
+    body: "my body",
+    title: "my title",
+  };
+
+  try {
+    let res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(post),
+    });
+
+    let data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+// update the data usong patch method
+async function updateDataUsingPatch() {
+  let post = {
+    body: "Edited body",
+  };
+  try {
+    let res = await fetch("https://jsonplaceholder.typicode.com/posts/6", {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(post),
+    });
+
+    let data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+// update the data usong put method
+async function updateDataUsingPut() {
+  let post = {
+    body: "Edited body using put",
+    title:"Edited title using put",
+  };
+  try {
+    let res = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(post),
+    });
+
+    let data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// Delete the data 
+async function deleteData() {
+    try {
+      let res = await fetch("https://jsonplaceholder.typicode.com/posts/2", {
+        method: "DELETE",
+      });
+  
+      let data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
