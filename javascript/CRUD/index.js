@@ -63,7 +63,7 @@ async function fetchDataFromApi(url, queryParams = "") {
       btns.className = "pageBtn";
       
       btns.addEventListener("click", ()=> {
-        fetchDataFromApi(`https://jsonplaceholder.typicode.com/posts?_page=${i}&_limit=${limit}`);
+        fetchDataFromApi(`https://jsonplaceholder.typicode.com/posts?_page=${i}&_limit=${limit}`, queryParams);
       })
 
       bottonContainer.append(btns);

@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#img-container{
+    z-index: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+#lens {
+    z-index: 2;
+    position: absolute;
+    height: 125px;
+    width: 125px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    cursor: none;
+}
+img{
+    max-width: 100%;
+}
