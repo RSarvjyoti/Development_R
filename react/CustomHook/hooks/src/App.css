@@ -1,0 +1,34 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.partition {
+  width: 100%;
+  display: flex;
+}
+
+.partition>div {
+  width: 33%;
+}
+
+.displayData {
+  background: red;
+}
+
+.displayData>h1{
+  text-align: center;
+}
+
+.storeData {
+  background: green;
+}
+
+.searchData {
+  background: blue;
+}
