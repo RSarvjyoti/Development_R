@@ -1,5 +1,6 @@
 import "./App.css";
 import DisplayData from "./components/DisplayData";
+import FormForLocalStorage from "./components/FormForLocalStorage";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         </div>
 
         <div className="storeData">
-
+          <FormForLocalStorage />
         </div>
 
         <div className="searchData">
