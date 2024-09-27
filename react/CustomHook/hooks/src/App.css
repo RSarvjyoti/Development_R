@@ -17,18 +17,6 @@
   width: 33%;
 }
 
-.displayData {
-  background: red;
-}
-
 .displayData>h1{
   text-align: center;
-}
-
-.storeData {
-  background: green;
-}
-
-.searchData {
-  background: blue;
 }

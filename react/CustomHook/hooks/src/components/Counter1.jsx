@@ -1,15 +1,19 @@
-import React from 'react'
-import { useCounter } from '../hooks/useCounter'
+import React from 'react';
+
+import usePrevious from '../customHooks/usePrevious';
+import { useCounter } from '../customHooks/useCounter';
+
 
 const Counter1 = () => {
+    const [count, handleCount] = useCounter(0)
+    const prevCount = usePrevious(count); 
 
-    const [count, handleCount] = useCounter(0);
+    return (
+        <div>
+            <button onClick={handleCount}>Click me {count}</button>
+            <p>Previous count: {prevCount}</p> 
+        </div>
+    );
+};
 
-  return (
-    <div>
-      <button onClick={handleCount}>Click me {count}</button>
-    </div>
-  )
-}
-
-export default Counter1
+export default Counter1;
